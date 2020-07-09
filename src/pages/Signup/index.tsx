@@ -30,7 +30,7 @@ const Signup: React.FC = () => {
       >
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{ flex: 1 }}
+          contentContainerStyle={{ flexGrow: 1 }}
         >
           <Container>
             <Image source={logoImg} />
@@ -49,6 +49,7 @@ const Signup: React.FC = () => {
               onPress={() => {
                 console.log('deu');
               }}
+              style={{ marginBottom: 16 }}
             >
               Cadastrar
             </Button>
