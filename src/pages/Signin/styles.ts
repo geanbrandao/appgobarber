@@ -7,7 +7,7 @@ export const Container = styled.View`
   align-items: center;
   justify-content: center;
 
-  padding: 0 30px;
+  padding: 32px 24px;
 `;
 
 export const Title = styled.Text`
@@ -28,10 +28,6 @@ export const ForgotPasswordText = styled.Text`
 `;
 
 export const CreateAccountButton = styled.TouchableOpacity`
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
   background: #312e38;
   border-top-width: 1px;
   border-color: #232129;

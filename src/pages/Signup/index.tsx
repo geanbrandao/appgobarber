@@ -6,7 +6,7 @@ import {
   Platform,
   View,
 } from 'react-native';
-
+import { useNavigation } from '@react-navigation/native';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
@@ -21,6 +21,8 @@ import {
 } from './styles';
 
 const Signup: React.FC = () => {
+  const navigation = useNavigation();
+
   return (
     <>
       <KeyboardAvoidingView
@@ -49,7 +51,6 @@ const Signup: React.FC = () => {
               onPress={() => {
                 console.log('deu');
               }}
-              style={{ marginBottom: 16 }}
             >
               Cadastrar
             </Button>
@@ -58,7 +59,7 @@ const Signup: React.FC = () => {
       </KeyboardAvoidingView>
       <BackToSigninButton
         onPress={() => {
-          console.log('Create account');
+          navigation.goBack();
         }}
       >
         <BackToSigninIcon name="arrow-left" size={18} color="#fff" />
