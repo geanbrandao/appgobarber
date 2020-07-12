@@ -1,23 +1,24 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
 
-import Signin from '../pages/Signin';
-import Signup from '../pages/Signup';
+import AuthRoutes from './auth.routes';
+import AppRoutes from './app.routes';
+
 import Splashscreen from '../pages/Splashscreen';
 
-const Auth = createStackNavigator();
+import { useAuth } from '../hooks/auth';
 
-const AuthRoutes: React.FC = () => (
-  <Auth.Navigator
-    screenOptions={{
-      headerShown: false,
-      cardStyle: { backgroundColor: '#312e38' },
-    }}
-  >
-    <Auth.Screen name="Splashscreen" component={Splashscreen} />
-    <Auth.Screen name="Signin" component={Signin} />
-    <Auth.Screen name="Signup" component={Signup} />
-  </Auth.Navigator>
-);
+const Routes: React.FC = () => {
+  const { user, loading } = useAuth();
+  if (loading) {
+    return <Splashscreen />;
+  }
 
-export default AuthRoutes;
+  return user ? <AppRoutes /> : <AuthRoutes />;
+};
+
+export default Routes;
+/*
+Por causa desse arquivo nao precisa de redirect na tela de login, pois quando
+tiver o usuario no context apos o login, vai mudar o sistema de rotas, e a rota
+inicial do appRoutes eh a dahsboard nesse caso
+*/
